@@ -48,10 +48,15 @@ bergm_info[[2]][['6200']]$nodeifactor.roma.1 <- NA
 bergm_info[[2]][['6300']]$mutual <- NA
 bergm_info[[2]][['6300']]$nodeifactor.roma.1 <- NA
 bergm_info[[2]][['6400']]$nodeifactor.roma.1 <- NA
+bergm_info[[2]][['7600']]$nodeofactor.gender.1 <- NA
+bergm_info[[2]][['7600']]$nodeifactor.gender.1 <- NA
+bergm_info[[2]][['7600']]$nodematch.gender <- NA
+bergm_info[[2]][['7600']]$odegree0 <- NA
 
 bergm_info[[3]][['2100']]$nodeofactor.gender.1 <- NA
 bergm_info[[3]][['2100']]$nodeifactor.gender.1 <- NA
 bergm_info[[3]][['2100']]$nodematch.gender <- NA
+bergm_info[[3]][['2100']]$odegree0 <- NA
 bergm_info[[3]][['6100']]$nodeifactor.roma.1 <- NA
 bergm_info[[3]][['6200']]$nodeifactor.roma.1 <- NA
 bergm_info[[3]][['6400']]$nodeifactor.roma.1 <- NA
