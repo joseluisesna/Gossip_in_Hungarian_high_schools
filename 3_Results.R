@@ -39,8 +39,14 @@ for(wave in seq_along(bergm_results)){
 }
 
 # For special model specfications
+bergm_info[[1]][['3400']]$nodeofactor.gender.1 <- NA
+bergm_info[[1]][['3400']]$nodeifactor.gender.1 <- NA
+bergm_info[[1]][['3400']]$nodematch.gender <- NA
 bergm_info[[1]][['6300']]$nodeifactor.roma.1 <- NA
 bergm_info[[1]][['7100']]$mutual <- NA
+bergm_info[[1]][['7100']]$nodeofactor.gender.1 <- NA
+bergm_info[[1]][['7100']]$nodeifactor.gender.1 <- NA
+bergm_info[[1]][['7100']]$nodematch.gender <- NA
 
 bergm_info[[2]][['1100']]$nodeifactor.roma.1 <- NA
 bergm_info[[2]][['5400']]$mutual <- NA
@@ -57,6 +63,9 @@ bergm_info[[3]][['2100']]$nodeofactor.gender.1 <- NA
 bergm_info[[3]][['2100']]$nodeifactor.gender.1 <- NA
 bergm_info[[3]][['2100']]$nodematch.gender <- NA
 bergm_info[[3]][['2100']]$odegree0 <- NA
+bergm_info[[3]][['5100']]$nodeofactor.gender.1 <- NA
+bergm_info[[3]][['5100']]$nodeifactor.gender.1 <- NA
+bergm_info[[3]][['5100']]$nodematch.gender <- NA
 bergm_info[[3]][['6100']]$nodeifactor.roma.1 <- NA
 bergm_info[[3]][['6200']]$nodeifactor.roma.1 <- NA
 bergm_info[[3]][['6400']]$nodeifactor.roma.1 <- NA
