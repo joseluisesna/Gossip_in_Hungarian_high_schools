@@ -358,14 +358,12 @@ bergm_results[[2]][[11]] <- bergmM(networks[[2]]$gossip[[11]]~
                                       edgecov(networks[[2]]$otherslookup[[11]]),
                                     burn.in=1000,main.iters=5000,gamma=0.22,
                                     prior.mean=c(rep(0,16)),prior.sigma=diag(5,16))
-# classroom 7600
+# classroom 7600 (no gender and no sinks)
 set.seed(0708)
 bergm_results[[2]][[13]] <- bergmM(networks[[2]]$gossip[[13]]~
                                       edges+mutual+
                                       gwodegree(decay=log(2),fixed=TRUE)+gwidegree(decay=log(2),fixed=TRUE)+
-                                      odegree(d=0)+ 
                                       dgwdsp(decay=log(2),fixed=TRUE,type='OTP')+
-                                      nodeofactor('gender')+nodeifactor('gender')+nodematch('gender',diff=FALSE)+
                                       nodeifactor('roma')+
                                       nodeocov('popular')+nodeocov('popular2')+
                                       edgecov(networks[[2]]$dislike[[13]])+
@@ -373,16 +371,15 @@ bergm_results[[2]][[13]] <- bergmM(networks[[2]]$gossip[[13]]~
                                       edgecov(networks[[2]]$shared_dislike[[13]])+
                                       edgecov(networks[[2]]$othersscorn[[13]])+
                                       edgecov(networks[[2]]$otherslookup[[13]]),
-                                    burn.in=1000,main.iters=5000,gamma=0.34,
-                                    prior.mean=c(rep(0,17)),prior.sigma=diag(5,17))
+                                    burn.in=1000,main.iters=5000,gamma=0.30,
+                                    prior.mean=c(rep(0,13)),prior.sigma=diag(5,13))
 
 ### TIME 3 ###
-# classroom 2100 (no gender)
+# classroom 2100 (no gender & no sinks)
 set.seed(0708)
 bergm_results[[3]][[2]] <- bergmM(networks[[3]]$gossip[[2]]~
                                      edges+mutual+
                                      gwodegree(decay=log(2),fixed=TRUE)+gwidegree(decay=log(2),fixed=TRUE)+
-                                     odegree(d=0)+ 
                                      dgwdsp(decay=log(2),fixed=TRUE,type='OTP')+
                                      nodeifactor('roma')+
                                      nodeocov('popular')+nodeocov('popular2')+
@@ -392,7 +389,7 @@ bergm_results[[3]][[2]] <- bergmM(networks[[3]]$gossip[[2]]~
                                      edgecov(networks[[3]]$othersscorn[[2]])+
                                      edgecov(networks[[3]]$otherslookup[[2]]),
                                    burn.in=1000,main.iters=5000,gamma=0.33,
-                                   prior.mean=c(rep(0,14)),prior.sigma=diag(5,14))
+                                   prior.mean=c(rep(0,13)),prior.sigma=diag(5,13))
 # classroom 5100
 set.seed(0708)
 bergm_results[[3]][[3]] <- bergmM(networks[[3]]$gossip[[3]]~
