@@ -193,7 +193,6 @@ bergm_results[[1]][[3]] <- bergmM(networks[[1]]$gossip[[3]]~
                                      gwodegree(decay=log(2),fixed=TRUE)+gwidegree(decay=log(2),fixed=TRUE)+
                                      odegree(d=0)+ 
                                      dgwdsp(decay=log(2),fixed=TRUE,type='OTP')+
-                                     #nodeofactor('gender')+nodeifactor('gender')+nodematch('gender',diff=FALSE)+
                                      nodeifactor('roma')+
                                      nodeocov('popular')+nodeocov('popular2')+
                                      edgecov(networks[[1]]$dislike[[3]])+
@@ -269,7 +268,6 @@ bergm_results[[1]][[9]] <- bergmM(networks[[1]]$gossip[[9]]~
                                      edgecov(networks[[1]]$otherslookup[[9]]),
                                    burn.in=1000,main.iters=5000,gamma=0.25,
                                    prior.mean=c(rep(0,17)),prior.sigma=diag(5,17))
-
 
 ### TIME 2 ###
 # classroom 1100 (no ethnicity)
