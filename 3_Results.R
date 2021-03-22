@@ -113,7 +113,7 @@ bergm_info$classroom <- substr(bergm_info$unit,1,4)
 bergm_info$time <- substr(bergm_info$unit,12,12)
 
 # VISUALISATION OF RESULTS 
-bergm_info$`p value` <- ifelse(bergm_info$pval < .05,'<.05','>=.05')
+bergm_info$`Bayesian p-value` <- ifelse(bergm_info$pval < .05,'<.05','>=.05')
 set.seed(290691)
 bergm_info$time2 <- jitter(as.numeric(bergm_info$time),factor=.75)
 
@@ -127,9 +127,8 @@ levels(bergm_info$predictor) <- c('Edges/Density','Mutual','Act. spread','Pop. s
                                   'Notoriety (target)','Notability (target)',
                                   'Direct antipathy','Shared antipathy','Undirect antipathy')
 
-no.background <- theme_bw()+
-  theme(plot.background=element_blank(),panel.grid.major=element_blank(),
-        panel.grid.minor=element_blank(),panel.border=element_blank())+
+grid.background <- theme_bw()+
+  theme(plot.background=element_blank(),panel.grid.minor=element_blank(),panel.border=element_blank())+
   theme(axis.line=element_line(color='black'))+
   theme(strip.text.x=element_text(colour='white',face='bold'))+
   theme(strip.background=element_rect(fill='black'))
@@ -139,11 +138,28 @@ ggplot(data=bergm_info)+
   geom_hline(yintercept=0,color='blue',alpha=.5)+
   geom_line(aes(x=time2,y=difference,group=classroom),alpha=.5,linetype='dashed')+
   geom_point(aes(x=time2,y=difference),colour='black',size=2.75)+
-  geom_point(aes(x=time2,y=difference,colour=`p value`),size=2,alpha=.9)+
+  geom_point(aes(x=time2,y=difference,colour=`Bayesian p-value`),size=2,alpha=.9)+
   scale_colour_manual(values = c('red','darkgrey'))+
-  facet_wrap(~predictor,nrow=3,ncol=6,scales='free_y')+
+  #ylim(-1,1)+
+  facet_wrap(~predictor,nrow=3,ncol=6)+
   xlab('Time')+
   ylab('Difference in probability')+
   scale_x_continuous(breaks=c(1,2,3))+
-  no.background
+  grid.background 
 dev.off()
+
+########################################################################################################################
+
+# TABLE OF RESULTS (APPENDIX)
+
+# Significance levels
+bergm_info$sign <- ifelse(bergm_info$pval < .001,'***',
+                          ifelse(bergm_info$pval < .01,'**',
+                                 ifelse(bergm_info$pval < .05,'*','')))
+
+bergm_info$par <- round(bergm_info$par,2)
+bergm_info$pval <- round(bergm_info$pval,3)
+bergm_info <- bergm_info[order(bergm_info$predictor),]
+bergm_info <- bergm_info[order(bergm_info$unit),]
+
+write.table(bergm_info,'bergm_results.csv',row.names=FALSE,sep=';')
