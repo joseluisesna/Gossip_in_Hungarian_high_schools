@@ -186,14 +186,14 @@ bergm_results[[1]][[2]] <- bergmM(networks[[1]]$gossip[[2]]~
                                      edgecov(networks[[1]]$otherslookup[[2]]),
                                    burn.in=1000,main.iters=5000,gamma=0.30,
                                    prior.mean=c(rep(0,17)),prior.sigma=diag(5,17))
-# classroom 3400
+# classroom 3400 (no gender)
 set.seed(0708)
 bergm_results[[1]][[3]] <- bergmM(networks[[1]]$gossip[[3]]~
                                      edges+mutual+
                                      gwodegree(decay=log(2),fixed=TRUE)+gwidegree(decay=log(2),fixed=TRUE)+
                                      odegree(d=0)+ 
                                      dgwdsp(decay=log(2),fixed=TRUE,type='OTP')+
-                                     nodeofactor('gender')+nodeifactor('gender')+nodematch('gender',diff=FALSE)+
+                                     #nodeofactor('gender')+nodeifactor('gender')+nodematch('gender',diff=FALSE)+
                                      nodeifactor('roma')+
                                      nodeocov('popular')+nodeocov('popular2')+
                                      edgecov(networks[[1]]$dislike[[3]])+
@@ -202,7 +202,7 @@ bergm_results[[1]][[3]] <- bergmM(networks[[1]]$gossip[[3]]~
                                      edgecov(networks[[1]]$othersscorn[[3]])+
                                      edgecov(networks[[1]]$otherslookup[[3]]),
                                    burn.in=1000,main.iters=5000,gamma=0.25,
-                                   prior.mean=c(rep(0,17)),prior.sigma=diag(5,17))
+                                   prior.mean=c(rep(0,14)),prior.sigma=diag(5,14))
 # classroom 6100
 set.seed(0708)
 bergm_results[[1]][[5]] <- bergmM(networks[[1]]$gossip[[5]]~
@@ -236,14 +236,13 @@ bergm_results[[1]][[6]] <- bergmM(networks[[1]]$gossip[[6]]~
                                      edgecov(networks[[1]]$otherslookup[[6]]),
                                    burn.in=1000,main.iters=5000,gamma=0.30,
                                    prior.mean=c(rep(0,16)),prior.sigma=diag(5,16))
-# classroom 7100 (no mutual ties)
+# classroom 7100 (no mutual ties and no gender)
 set.seed(0708)
 bergm_results[[1]][[8]] <- bergmM(networks[[1]]$gossip[[8]]~
                                      edges+
                                      gwodegree(decay=log(2),fixed=TRUE)+gwidegree(decay=log(2),fixed=TRUE)+
                                      odegree(d=0)+ 
                                      dgwdsp(decay=log(2),fixed=TRUE,type='OTP')+
-                                     nodeofactor('gender')+nodeifactor('gender')+nodematch('gender',diff=FALSE)+
                                      nodeifactor('roma')+
                                      nodeocov('popular')+nodeocov('popular2')+
                                      edgecov(networks[[1]]$dislike[[8]])+
@@ -251,8 +250,8 @@ bergm_results[[1]][[8]] <- bergmM(networks[[1]]$gossip[[8]]~
                                      edgecov(networks[[1]]$shared_dislike[[8]])+
                                      edgecov(networks[[1]]$othersscorn[[8]])+
                                      edgecov(networks[[1]]$otherslookup[[8]]),
-                                   burn.in=1000,main.iters=5000,gamma=0.32,
-                                   prior.mean=c(rep(0,16)),prior.sigma=diag(5,16))
+                                   burn.in=1000,main.iters=5000,gamma=0.30,
+                                   prior.mean=c(rep(0,13)),prior.sigma=diag(5,13))
 # classroom 7800
 set.seed(0708)
 bergm_results[[1]][[9]] <- bergmM(networks[[1]]$gossip[[9]]~
@@ -390,14 +389,14 @@ bergm_results[[3]][[2]] <- bergmM(networks[[3]]$gossip[[2]]~
                                      edgecov(networks[[3]]$otherslookup[[2]]),
                                    burn.in=1000,main.iters=5000,gamma=0.33,
                                    prior.mean=c(rep(0,13)),prior.sigma=diag(5,13))
-# classroom 5100
+# classroom 5100 (no gender)
 set.seed(0708)
 bergm_results[[3]][[3]] <- bergmM(networks[[3]]$gossip[[3]]~
                                      edges+mutual+
                                      gwodegree(decay=log(2),fixed=TRUE)+gwidegree(decay=log(2),fixed=TRUE)+
                                      odegree(d=0)+ 
                                      dgwdsp(decay=log(2),fixed=TRUE,type='OTP')+
-                                     nodeofactor('gender')+nodeifactor('gender')+nodematch('gender',diff=FALSE)+
+                                     #nodeofactor('gender')+nodeifactor('gender')+nodematch('gender',diff=FALSE)+
                                      nodeifactor('roma')+
                                      nodeocov('popular')+nodeocov('popular2')+
                                      edgecov(networks[[3]]$dislike[[3]])+
@@ -406,7 +405,7 @@ bergm_results[[3]][[3]] <- bergmM(networks[[3]]$gossip[[3]]~
                                      edgecov(networks[[3]]$othersscorn[[3]])+
                                      edgecov(networks[[3]]$otherslookup[[3]]),
                                    burn.in=1000,main.iters=5000,gamma=0.35,
-                                   prior.mean=c(rep(0,17)),prior.sigma=diag(5,17))
+                                   prior.mean=c(rep(0,14)),prior.sigma=diag(5,14))
 # classroom 6100 (no ethnicity)
 set.seed(0708)
 bergm_results[[3]][[4]] <- bergmM(networks[[3]]$gossip[[4]]~
