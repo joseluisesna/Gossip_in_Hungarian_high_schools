@@ -396,7 +396,6 @@ bergm_results[[3]][[3]] <- bergmM(networks[[3]]$gossip[[3]]~
                                      gwodegree(decay=log(2),fixed=TRUE)+gwidegree(decay=log(2),fixed=TRUE)+
                                      odegree(d=0)+ 
                                      dgwdsp(decay=log(2),fixed=TRUE,type='OTP')+
-                                     #nodeofactor('gender')+nodeifactor('gender')+nodematch('gender',diff=FALSE)+
                                      nodeifactor('roma')+
                                      nodeocov('popular')+nodeocov('popular2')+
                                      edgecov(networks[[3]]$dislike[[3]])+
