@@ -139,7 +139,7 @@ levels(bergm_info$predictor) <- c('Edges/Density','Mutual','Act. spread','Pop. s
                                   'Female (sender)','Female (target)','Same gender',
                                   'Roma (target)','Popularity (sender)','Popularity^2 (sender)',
                                   'Notoriety (target)','Notability (target)',
-                                  'Direct antipathy','Shared antipathy','Undirect antipathy')
+                                  'Direct antipathy','Shared antipathy','Indirect antipathy')
 
 grid.background <- theme_bw()+
   theme(plot.background=element_blank(),panel.grid.minor=element_blank(),panel.border=element_blank())+
