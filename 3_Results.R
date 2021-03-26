@@ -151,8 +151,8 @@ jpeg(filename='BERGM_results.jpeg',width=12,height=9,units='in',res=1500)
 ggplot(data=bergm_info)+
   geom_hline(yintercept=0,color='blue',alpha=.5)+
   geom_line(aes(x=time2,y=difference,group=classroom),alpha=.5,linetype='dashed')+
-  geom_point(aes(x=time2,y=difference),colour='black',size=2.75)+
-  geom_point(aes(x=time2,y=difference,colour=`Bayesian p-value`),size=2,alpha=.9)+
+  geom_point(aes(x=time2,y=difference),colour='black',size=1.5)+
+  geom_point(aes(x=time2,y=difference,colour=`Bayesian p-value`),size=1,alpha=.9)+
   scale_colour_manual(values = c('red','darkgrey'))+
   #ylim(-1,1)+
   facet_wrap(~predictor,nrow=3,ncol=6)+
