@@ -75,7 +75,7 @@ for(wave in seq_along(bergm_info)){
   for(room in seq_along(bergm_info[[wave]])){
     bergm_info[[wave]][[room]] <- bergm_info[[wave]][[room]][,order(names(bergm_info[[wave]][[room]]),decreasing=FALSE)]
     names(bergm_info[[wave]][[room]]) <- c('classroom','dislike','2nd_dislike','otherslookup','othersscorn',
-                                           'shared_dislike','edges','gwdsp',
+                                           'shared_dislike','edges','gwdsp','gwesp',
                                            'pop_spread','act_spread','mutual','female_alt','roma_alt','gender_sam',
                                            'popular_ego','popular2_ego','female_ego','sinks')
   }
@@ -129,14 +129,14 @@ bergm_info$time <- substr(bergm_info$unit,12,12)
 # VISUALISATION OF RESULTS 
 bergm_info$`Bayesian p-value` <- ifelse(bergm_info$pval < .05,'<.05','>=.05')
 set.seed(290691)
-bergm_info$time2 <- jitter(as.numeric(bergm_info$time),factor=.75)
+bergm_info$time2 <- jitter(as.numeric(bergm_info$time),factor=.1)
 
 bergm_info$predictor <- factor(bergm_info$predictor,
-                               levels=c('edges','mutual','act_spread','pop_spread','sinks','gwdsp',
+                               levels=c('edges','mutual','act_spread','pop_spread','sinks','gwdsp','gwesp',
                                         'female_ego','female_alt','gender_sam','roma_alt','popular_ego','popular2_ego',
                                         'othersscorn','otherslookup','dislike','shared_dislike','2nd_dislike'))
 levels(bergm_info$predictor) <- c('Edges/Density','Mutual','Act. spread','Pop. spread','Sinks','Multiple two-paths',
-                                  'Female (sender)','Female (target)','Same gender',
+                                  'GWESP','Female (sender)','Female (target)','Same gender',
                                   'Roma (target)','Popularity (sender)','Popularity^2 (sender)',
                                   'Notoriety (target)','Notability (target)',
                                   'Direct antipathy','Shared antipathy','Indirect antipathy')
@@ -147,15 +147,14 @@ grid.background <- theme_bw()+
   theme(strip.text.x=element_text(colour='white',face='bold'))+
   theme(strip.background=element_rect(fill='black'))
 
-jpeg(filename='BERGM_results.jpeg',width=12,height=9,units='in',res=1500)
+jpeg(filename='BERGM_results.jpeg',width=16,height=8,units='in',res=500)
 ggplot(data=bergm_info)+
   geom_hline(yintercept=0,color='blue',alpha=.5)+
   geom_line(aes(x=time2,y=difference,group=classroom),alpha=.5,linetype='dashed')+
-  geom_point(aes(x=time2,y=difference),colour='black',size=1.5)+
-  geom_point(aes(x=time2,y=difference,colour=`Bayesian p-value`),size=1,alpha=.9)+
+  geom_point(aes(x=time2,y=difference),colour='black',size=2)+
+  geom_point(aes(x=time2,y=difference,colour=`Bayesian p-value`),size=1.5,alpha=.9)+
   scale_colour_manual(values = c('red','darkgrey'))+
-  #ylim(-1,1)+
-  facet_wrap(~predictor,nrow=3,ncol=6)+
+  facet_wrap(~predictor,nrow=2,ncol=9)+
   xlab('Time')+
   ylab('Difference in probability')+
   scale_x_continuous(breaks=c(1,2,3))+

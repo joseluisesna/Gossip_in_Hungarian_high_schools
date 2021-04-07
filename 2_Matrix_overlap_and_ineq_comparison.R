@@ -132,7 +132,7 @@ for(i in axis_order$classroom){
 }
 axis_order <- axis_order$classroom[order(axis_order$mean_ratio,decreasing=FALSE)]
 
-jpeg(filename='Gini_coeff_ratio.jpeg',width=6,height=6,units='in',res=1200)
+jpeg(filename='Gini_coeff_ratio.jpeg',width=6,height=6,units='in',res=500)
 ggplot(data=ties)+
   geom_rect(xmin=1/1.1,xmax=1.1,ymin=axis_order[1],ymax=axis_order[length(axis_order)],colour='skyblue',fill='skyblue')+
   geom_vline(aes(xintercept=1),colour='blue',alpha=.5)+
