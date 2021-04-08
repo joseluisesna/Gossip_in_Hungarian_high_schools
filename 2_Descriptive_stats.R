@@ -85,7 +85,7 @@ gossip_ntw <- c(networks$wave1$gossip,networks$wave2$gossip,networks$wave3$gossi
 gossip_desc <- data.frame(matrix(NA,nrow=length(gossip_ntw),ncol=13))
 names(gossip_desc) <- c('class','time','female','roma','ties',
                         'ties_missing','potential_ties','missing',
-                        'ave_degree','density','recip','connectivity','isolates')
+                        'ave_degree','density','recip','transitivity','isolates')
 gossip_desc$class <- names(gossip_ntw)
 gossip_desc$time <- c(rep(1,9),rep(2,13),rep(3,6))
 
@@ -97,7 +97,7 @@ for(i in seq_along(gossip_ntw)){
   gossip_desc$ave_degree[i] <- round(mean(degree(gossip_ntw[[i]])),1)
   gossip_desc$density[i] <- round(gden(gossip_ntw[[i]])*100,1)
   gossip_desc$recip[i] <- round(grecip(gossip_ntw[[i]],measure='edgewise')*100,1)
-  gossip_desc$connectivity[i] <- triad.census(gossip_ntw[[i]])[14]
+  gossip_desc$transitivity[i] <- round(igraph::transitivity(igraph::graph_from_adjacency_matrix(gossip_ntw[[i]]))*100,1)
   gossip_desc$isolates[i] <- length(isolates(gossip_ntw[[i]]))
 }
 gossip_desc$missing <- round(gossip_desc$ties_missing / gossip_desc$potential_ties*100,1)
