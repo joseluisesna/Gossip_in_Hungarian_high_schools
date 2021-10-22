@@ -12,7 +12,7 @@ library(ggplot2)
 
 # BERGM RESULTS 
 rm(list=ls())
-load("bergm_results.RData")
+load("bergm_results_null.RData")
 rm(list=setdiff(ls(), c('bergm_results')))
 
 ########################################################################################################################
@@ -39,45 +39,21 @@ for(wave in seq_along(bergm_results)){
 }
 
 # For special model specfications
-bergm_info[[1]][['3400']]$nodeofactor.gender.1 <- NA
-bergm_info[[1]][['3400']]$nodeifactor.gender.1 <- NA
-bergm_info[[1]][['3400']]$nodematch.gender <- NA
-bergm_info[[1]][['6300']]$nodeifactor.roma.1 <- NA
 bergm_info[[1]][['7100']]$mutual <- NA
-bergm_info[[1]][['7100']]$nodeofactor.gender.1 <- NA
-bergm_info[[1]][['7100']]$nodeifactor.gender.1 <- NA
-bergm_info[[1]][['7100']]$nodematch.gender <- NA
 
-bergm_info[[2]][['1100']]$nodeifactor.roma.1 <- NA
 bergm_info[[2]][['5400']]$mutual <- NA
-bergm_info[[2]][['6200']]$nodeifactor.roma.1 <- NA
 bergm_info[[2]][['6300']]$mutual <- NA
-bergm_info[[2]][['6300']]$nodeifactor.roma.1 <- NA
-bergm_info[[2]][['6400']]$nodeifactor.roma.1 <- NA
-bergm_info[[2]][['7600']]$nodeofactor.gender.1 <- NA
-bergm_info[[2]][['7600']]$nodeifactor.gender.1 <- NA
-bergm_info[[2]][['7600']]$nodematch.gender <- NA
 bergm_info[[2]][['7600']]$odegree0 <- NA
 
-bergm_info[[3]][['2100']]$nodeofactor.gender.1 <- NA
-bergm_info[[3]][['2100']]$nodeifactor.gender.1 <- NA
-bergm_info[[3]][['2100']]$nodematch.gender <- NA
 bergm_info[[3]][['2100']]$odegree0 <- NA
-bergm_info[[3]][['5100']]$nodeofactor.gender.1 <- NA
-bergm_info[[3]][['5100']]$nodeifactor.gender.1 <- NA
-bergm_info[[3]][['5100']]$nodematch.gender <- NA
-bergm_info[[3]][['6100']]$nodeifactor.roma.1 <- NA
-bergm_info[[3]][['6200']]$nodeifactor.roma.1 <- NA
-bergm_info[[3]][['6400']]$nodeifactor.roma.1 <- NA
 
 # Creation of a single dataset containing all the posteriors
 for(wave in seq_along(bergm_info)){
   for(room in seq_along(bergm_info[[wave]])){
     bergm_info[[wave]][[room]] <- bergm_info[[wave]][[room]][,order(names(bergm_info[[wave]][[room]]),decreasing=FALSE)]
-    names(bergm_info[[wave]][[room]]) <- c('classroom','dislike','2nd_dislike','otherslookup','othersscorn',
+    names(bergm_info[[wave]][[room]]) <- c('classroom','dislike','2nd_dislike',
                                            'shared_dislike','edges','gwdsp','gwesp',
-                                           'pop_spread','act_spread','mutual','female_alt','roma_alt','gender_sam',
-                                           'popular_ego','popular2_ego','female_ego','sinks')
+                                           'pop_spread','act_spread','mutual','sinks')
   }
   bergm_info[[wave]] <- do.call('rbind',bergm_info[[wave]])
 }
@@ -133,13 +109,9 @@ bergm_info$time2 <- jitter(as.numeric(bergm_info$time),factor=.1)
 
 bergm_info$predictor <- factor(bergm_info$predictor,
                                levels=c('edges','mutual','act_spread','pop_spread','sinks','gwdsp','gwesp',
-                                        'female_ego','female_alt','gender_sam','roma_alt','popular_ego','popular2_ego',
-                                        'othersscorn','otherslookup','dislike','shared_dislike','2nd_dislike'))
+                                        'dislike','shared_dislike','2nd_dislike'))
 levels(bergm_info$predictor) <- c('Edges/Density','Mutual','Act. spread','Pop. spread','Sinks','Multiple two-paths',
-                                  'GWESP','Female (sender)','Female (target)','Same gender',
-                                  'Roma (target)','Popularity (sender)','Popularity^2 (sender)',
-                                  'Low reputation (target)','High reputation (target)',
-                                  'Direct antipathy','Shared antipathy','Indirect antipathy')
+                                  'GWESP','Direct antipathy','Shared antipathy','Indirect antipathy')
 
 grid.background <- theme_bw()+
   theme(plot.background=element_blank(),panel.grid.minor=element_blank(),panel.border=element_blank())+
@@ -147,14 +119,14 @@ grid.background <- theme_bw()+
   theme(strip.text.x=element_text(colour='white',face='bold'))+
   theme(strip.background=element_rect(fill='black'))
 
-jpeg(filename='BERGM_results.jpeg',width=15,height=8,units='in',res=500)
+jpeg(filename='BERGM_results.jpeg',width=11,height=8,units='in',res=500)
 ggplot(data=bergm_info)+
   geom_hline(yintercept=0,color='blue',alpha=.5)+
   geom_line(aes(x=time2,y=difference,group=classroom),alpha=.5,linetype='dashed')+
   geom_point(aes(x=time2,y=difference),colour='black',size=3)+
   geom_point(aes(x=time2,y=difference,colour=`Bayesian p-value`),size=2,alpha=.9)+
   scale_colour_manual(values = c('red','darkgrey'))+
-  facet_wrap(~predictor,nrow=2,ncol=9)+
+  facet_wrap(~predictor,nrow=2,ncol=5)+
   xlab('Time')+
   ylab('Difference in probability')+
   scale_x_continuous(breaks=c(1,2,3))+

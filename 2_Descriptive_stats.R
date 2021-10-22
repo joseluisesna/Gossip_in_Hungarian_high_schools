@@ -87,7 +87,7 @@ names(gossip_desc) <- c('class','time','female','roma','ties',
                         'ties_missing','potential_ties','missing',
                         'ave_degree','density','recip','transitivity','isolates')
 gossip_desc$class <- names(gossip_ntw)
-gossip_desc$time <- c(rep(1,9),rep(2,13),rep(3,6))
+gossip_desc$time <- c(rep(1,6),rep(2,6),rep(3,5))
 
 # Extraction of information from the gossip networks
 for(i in seq_along(gossip_ntw)){

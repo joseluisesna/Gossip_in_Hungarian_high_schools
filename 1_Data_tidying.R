@@ -252,6 +252,17 @@ for(wave in seq_along(networks)){
   }
 }
 
+# Exclusion of classrooms that will not converge using BERGMs
+for(item in seq_along(networks$wave2)){
+  networks$wave2[[item]] <- networks$wave2[[item]][c(2,3,5,6,8,9)]
+}
+for(item in seq_along(networks$wave3)){
+  networks$wave3[[item]] <- networks$wave3[[item]][c(1,7,9,10,11,13)]
+}
+for(item in seq_along(networks$wave4)){
+  networks$wave4[[item]] <- networks$wave4[[item]][c(2,3,4,5,6)]
+}
+
 # Sample selection in the attribute object
 for(wave in seq_along(students)){
   students[[wave]] <- students[[wave]][students[[wave]]$class %in% names(networks[[wave]]$gossip),]
