@@ -1,7 +1,7 @@
 ########################################################################################################################
 ## GOSSIP IN HUNGARIAN HIGH SCHOOLS
 ## Ancillary analyses and extra plots (1.1)
-## R script written by Jose Luis Estevez (University of Linkoping)
+## R script written by Jose Luis Estevez (Linkoping University)
 ## Date: October 19th, 2020
 ########################################################################################################################
 

@@ -1,7 +1,7 @@
 ########################################################################################################################
 ## GOSSIP IN HUNGARIAN HIGH SCHOOLS
-## Descriptive statistics (2)
-## R script written by Jose Luis Estevez (University of Linkoping)
+## Descriptive statistics (2.1)
+## R script written by Jose Luis Estevez (Linkoping University)
 ## Date: October 19th, 2020
 ########################################################################################################################
 

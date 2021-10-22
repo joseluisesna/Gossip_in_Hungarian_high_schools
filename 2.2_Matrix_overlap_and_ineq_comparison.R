@@ -1,7 +1,7 @@
 ########################################################################################################################
 ## GOSSIP IN HUNGARIAN HIGH SCHOOLS
-## Matrix overlap and inequality comparison (2)
-## R script written by Jose Luis Estevez (University of Linkoping)
+## Matrix overlap and inequality comparison (2.2)
+## R script written by Jose Luis Estevez (Linkoping University)
 ## Date: March 5th, 2021
 ########################################################################################################################
 
