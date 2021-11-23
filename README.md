@@ -1,7 +1,7 @@
 # Gossip in Hungarian high schools
 
 This repository contains the replication package for the article:
-Estévez, J. L., Kisfalusi, D., & Takács, K. (forthcoming). More than one's negative ties: The role of friends' antipathies in high school gossip. *Social Networks*. DOI: .
+Estévez, J. L., Kisfalusi, D., & Takács, K. (forthcoming). More than one's negative ties: The role of friends' antipathies in high school gossip. *Social Networks*. https://doi.org/10.1016/j.socnet.2021.11.009.
 
 **Software requirements**
 
